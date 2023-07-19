@@ -92,7 +92,7 @@ def main():
         # Display the annual figures and Heat Pump kW in a card
         st.subheader("Annual Figures")
         st.write(f"Annual kWh: {api_response['annualKWh']:.2f}")
-        st.write(f"Annual Cost: ${api_response['annualCost']:.2f}")
+        st.write(f"Annual Cost: £{api_response['annualCost']:.2f}")
         st.write(f"Heat Pump kW: {api_response['heatPumpKw']:.2f}")
 
         # Create DataFrame for monthly data
@@ -112,7 +112,7 @@ def main():
         fig = go.Figure()
         fig.add_trace(go.Bar(x=df['Month'], y=df['Monthly kWh'], name='kWh'))
         fig.add_trace(
-            go.Bar(x=df['Month'], y=df['Monthly Cost'], name='Cost', marker_color='orange'))
+            go.Bar(x=df['Month'], y=df['Monthly Cost (£)'], name='Cost £', marker_color='orange'))
 
         fig.update_layout(
             title='Monthly kWh and Cost',
