@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
-import matplotlib.pyplot as plt
-import numpy as np
+import plotly.graph_objects as go
 
 # Function to post the data to the API endpoint and get the response
 
@@ -40,7 +39,7 @@ region_mapping = {
 
 
 def main():
-    st.title("Heat Pump Rule of Thumb Calculator")
+    st.title("Heat Pump Data Visualization")
 
     st.write("Please input the following variables:")
 
@@ -108,18 +107,21 @@ def main():
         }
         df = pd.DataFrame(monthly_data)
 
-        # Plot graphs
+        # Plot interactive graphs using Plotly
         st.subheader("Monthly kWh and Cost")
-        fig, ax = plt.subplots(2, 1, figsize=(8, 10))
-        ax[0].bar(df['Month'], df['Monthly kWh'])
-        ax[0].set_ylabel('kWh')
-        ax[0].set_title('Monthly kWh')
-        ax[1].bar(df['Month'], df['Monthly Cost'], color='orange')
-        ax[1].set_xlabel('Month')
-        ax[1].set_ylabel('Cost')
-        ax[1].set_title('Monthly Cost ($)')
-        plt.tight_layout()
-        st.pyplot(fig)
+        fig = go.Figure()
+        fig.add_trace(go.Bar(x=df['Month'], y=df['Monthly kWh'], name='kWh'))
+        fig.add_trace(
+            go.Bar(x=df['Month'], y=df['Monthly Cost'], name='Cost', marker_color='orange'))
+
+        fig.update_layout(
+            title='Monthly kWh and Cost',
+            xaxis_title='Month',
+            yaxis_title='',
+            barmode='group'
+        )
+
+        st.plotly_chart(fig)
 
 
 if __name__ == "__main__":
