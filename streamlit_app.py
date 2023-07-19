@@ -39,7 +39,7 @@ region_mapping = {
 
 
 def main():
-    st.title("Heat Pump Data Visualization")
+    st.title("Heat Pump Rule of Thumb Calculator")
 
     st.write("Please input the following variables:")
 
