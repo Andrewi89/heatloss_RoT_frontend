@@ -112,7 +112,7 @@ def main():
         fig = go.Figure()
         fig.add_trace(go.Bar(x=df['Month'], y=df['Monthly kWh'], name='kWh'))
         fig.add_trace(
-            go.Bar(x=df['Month'], y=df['Monthly Cost (£)'], name='Cost £', marker_color='orange'))
+            go.Bar(x=df['Month'], y=df['Monthly Cost'], name='Cost £', marker_color='orange'))
 
         fig.update_layout(
             title='Monthly kWh and Cost',
