@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 
 
 def get_api_response(data):
-    api_url = "https://api.andrewireland.co.uk/calculate"
+    api_url = "https://api.andrewireland.co.uk/heatpumpest"
     headers = {"Content-Type": "application/json"}
     response = requests.post(api_url, json=data, headers=headers)
     return response.json()
