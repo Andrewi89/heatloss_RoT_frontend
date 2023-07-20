@@ -56,7 +56,7 @@ def main():
         "1970-1995",
         "1996-2005",
         "2006-2010",
-        "New build",
+        "2010+",
     ]
     age = st.selectbox("Age", age_options)
 
